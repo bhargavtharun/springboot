@@ -8,8 +8,16 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
+  demands: maven
+
 
 steps:
+- task: Maven@3
+  displayName: 'maven app/pom.xml'
+  inputs:
+    mavenPomFile: 'app/pom.xml'
+    codeCoverageToolOption: Cobertura
+    
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
